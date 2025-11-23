@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import "./App.scss";
 import {
   MdFullscreen,
@@ -8,32 +7,56 @@ import {
   MdAutorenew,
 } from "react-icons/md";
 import { FaSpotify } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+// Background
+import Particles from "react-particles";
+import type { Engine } from "tsparticles-engine"; // same package everywhere
+import { loadHyperspacePreset } from "tsparticles-preset-hyperspace";
 
 function App() {
+  const particlesInit = async (engine: Engine) => {
+    await loadHyperspacePreset(engine);
+  };
+
   return (
     <>
-      <h1>KEYTHM</h1>
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={{ preset: "hyperspace", fullScreen: { zIndex: -1 } }}
+      />
+
+      <div className="wave-container">
+        <h1 className="wave-text">
+          <span>K</span>
+          <span>E</span>
+          <span>Y</span>
+          <span>T</span>
+          <span>H</span>
+          <span>M</span>
+        </h1>
+      </div>
 
       <section className="instructions">
         <p>Type words along with the music</p>
+        <p>Keep your health bar up (10hp) </p>
         <p>Build your combos</p>
-        <p>Keep your health bar up</p>
       </section>
 
-      <button>PLAY</button>
+      <Link to="game">
+        <button>PLAY</button>
+      </Link>
 
       <section className="grid">
         <div>
           <MdFullscreen className="grid-icon" size={100} />
-          <p>Full-screen for the best experience</p>
+          <p>Full-screen (F11) for the best experience</p>
         </div>
 
         <div>
           <MdOutlineExtensionOff className="grid-icon" size={80} />
-          <p>
-            Disable extensions that may interfere with gameplay, colors, or even
-            performance
-          </p>
+          <p>Disable extensions that may interfere with gameplay</p>
         </div>
 
         <div>
@@ -48,10 +71,7 @@ function App() {
 
         <div>
           <MdAutorenew className="grid-icon" size={85} />
-          <p>
-            Keep in mind, this is a beta product. More features will be coming
-            soon!
-          </p>
+          <p>This is a beta product. More features will be coming soon!</p>
         </div>
 
         <div>

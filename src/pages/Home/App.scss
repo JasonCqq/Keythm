@@ -15,6 +15,41 @@ h1 {
   padding-top: 5vh;
 }
 
+.wave-text span {
+  display: inline-block;
+  font-size: 4rem;
+  animation: wave 2s ease-in-out infinite;
+}
+
+.wave-text span:nth-child(1) {
+  animation-delay: 0s;
+}
+.wave-text span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.wave-text span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.wave-text span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.wave-text span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.wave-text span:nth-child(6) {
+  animation-delay: 1s;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
 button {
   color: var(--text);
   margin-top: 5vh;
@@ -27,7 +62,7 @@ button {
   gap: 1vh;
   padding-top: 5vh;
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   color: var(--text2);
 }
 
@@ -35,7 +70,13 @@ button {
   display: grid;
   grid-template-columns: repeat(3, auto);
   row-gap: 8vh;
-  padding-top: 10vh;
+  width: 55vw;
+
+  padding: 5vh 0;
+  margin-top: 5vh;
+
+  background-color: rgba($color: #000000, $alpha: 0.75);
+  border-radius: 8px;
 
   > div {
     display: flex;
@@ -59,7 +100,7 @@ footer {
   position: fixed;
   bottom: 0;
   text-align: center;
-  background-color: var(--modal-bg);
+
   height: 6vh;
   width: 100vw;
 
