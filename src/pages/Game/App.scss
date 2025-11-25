@@ -1,5 +1,18 @@
+.options {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: var(--modal-bg);
+  padding: 20px;
+  border-radius: 8px;
+  margin-right: 350px;
+  margin-top: 250px;
+}
+
 .song {
-  width: 25vw;
+  width: 40vw;
+  text-align: start;
+
   .song-title {
     padding-top: 5vh;
     font-weight: 900;
@@ -10,21 +23,49 @@
 
   .song-info {
     display: flex;
-    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
     font-weight: 600;
+
+    > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
   }
 }
 
 .lyrics-wrapper {
-  background-color: var(--modal-bg);
-  padding: 2em;
+  //   background-color: rgba(black, 0.15);
+  padding: 2em, 2em, 2em, 0;
   border-radius: 8px;
   font-weight: 700;
 
   // temp height
   margin-top: 5vh;
   height: 30vh;
-  //   max-width: ;
+  max-width: 40vw;
+
+  .lyrics {
+    font-weight: 900;
+    font-size: 3rem;
+    text-align: start;
+
+    .highlight {
+      color: white !important;
+    }
+
+    .typed {
+      color: var(--text) !important;
+    }
+
+    .untyped {
+      color: gray;
+    }
+  }
 }
 
 .combo {
@@ -35,19 +76,37 @@
   display: flex;
   width: 25vw;
   justify-content: space-between;
+
+  .key-pressed {
+    opacity: 0.15;
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    p {
+      font-size: 25px;
+      font-weight: 900;
+    }
+  }
 }
 
 .score-wrap {
   position: fixed;
   bottom: 0;
   font-weight: 900;
+  font-size: 4rem;
 
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
 
-  .score {
-    font-size: 3rem;
+  //   .score {
+  //     font-size: 3rem;
+  //   }
+  .count-up-text {
+    color: white;
   }
 
   p {
