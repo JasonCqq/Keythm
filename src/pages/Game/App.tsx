@@ -1,16 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import "./App.scss";
 
-import { RiTimer2Fill } from "react-icons/ri";
-import { PiMicrophoneStageFill } from "react-icons/pi";
+import { FaPlay } from "react-icons/fa";
+import { MdOutlineReplay } from "react-icons/md";
+import { IoExitOutline } from "react-icons/io5";
 
 import Counter from "./ComboCounter/App.tsx";
 import CountUp from "./ScoreCounter/App.tsx";
+import { Link } from "react-router-dom";
 
 function App() {
-  const [title, setTitle] = useState("Someone To Spend Time With");
-  const [artist, setArtist] = useState("Los Gatos");
-  const [length, setLength] = useState("2:55");
+  // const [title, setTitle] = useState("Someone To Spend Time With");
+  // const [artist, setArtist] = useState("Los Gatos");
+  // const [length, setLength] = useState("2:55");
 
   // const hp, progress
 
@@ -31,16 +33,23 @@ function App() {
   const keyCounter = useRef(0);
 
   useEffect(() => {
+    // Everything below here is for key pressing functions
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyCount = keyCounter.current;
 
       // Skip non letters
       if (!/^[a-zA-Z]$/.test(e.key)) return;
 
+      // Type sound
+      const sound = document.getElementById("sound") as HTMLAudioElement;
+      sound.volume = 0.1;
+      sound.currentTime = 0;
+      sound.play();
+
       // Check if key is correct
       if (e.key === lyrics[keyCount]) {
         setCombo((prev) => prev + 1);
-        setScore((prev) => prev + 1000);
+        setScore((prev) => prev + 300 * combo);
       } else {
         setCombo(0);
       }
@@ -69,31 +78,49 @@ function App() {
 
   return (
     <>
-      <div className="options">
-        <p>PLAY</p>
-        <p>RESTART</p>
-        <p>EXIT</p>
-        <p>VOLUME SLIDER</p>
+      <audio id="sound" src="/click.mp3"></audio>
+
+      <iframe
+        width="25%"
+        height="126"
+        scrolling="no"
+        frameBorder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2095478871&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+      ></iframe>
+      <div>
+        <a href="https://soundcloud.com/diplo" title="Diplo" target="_blank">
+          Diplo
+        </a>
+        <a
+          href="https://soundcloud.com/diplo/brain-feat-artemas"
+          title="BRAIN (feat. Artemas)"
+          target="_blank"
+        >
+          BRAIN (feat. Artemas)
+        </a>
       </div>
 
-      <header className="song">
-        <p className="song-title">{title}</p>
-        <section className="song-info">
-          {/* Add a timer icon to song length and artist */}
+      <div className="options">
+        <span>
+          <FaPlay />
+          <p>PLAY</p>
+        </span>
 
-          <span>
-            <PiMicrophoneStageFill />
-            <p className="song-artist">{artist}</p>
-          </span>
+        <span>
+          <MdOutlineReplay />
+          <p>RESTART</p>
+        </span>
 
-          <span>
-            <RiTimer2Fill />
-            <p className="song-length">{length}</p>
-          </span>
-        </section>
-      </header>
+        <Link to="/" className="span">
+          <IoExitOutline />
+          <p>EXIT</p>
+        </Link>
 
-      <div className="song-progress"></div>
+        <span>
+          <p>VOLUME SLIDER</p>
+        </span>
+      </div>
 
       <section className="lyrics-wrapper">
         <p className="lyrics">
@@ -130,8 +157,6 @@ function App() {
           <p>x</p>
         </div>
       </span>
-
-      <div className="hp"></div>
 
       <section className="score-wrap">
         <CountUp

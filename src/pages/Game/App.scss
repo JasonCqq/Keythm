@@ -1,40 +1,29 @@
+a {
+  text-decoration: none;
+  font-weight: 900;
+  color: var(--text);
+}
+
 .options {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: var(--modal-bg);
-  padding: 20px;
-  border-radius: 8px;
   margin-right: 350px;
   margin-top: 250px;
-}
 
-.song {
-  width: 40vw;
-  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 15px;
 
-  .song-title {
-    padding-top: 5vh;
-    font-weight: 900;
-    font-size: 2.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+  font-weight: 900;
+  font-size: 1.5rem;
 
-  .song-info {
+  span,
+  .span {
     display: flex;
-    align-items: baseline;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    font-weight: 600;
-
-    > span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
+    align-items: center;
+    gap: 15px;
   }
 }
 
@@ -114,24 +103,6 @@
   }
 }
 
-.hp {
-  width: 15px;
-  height: 90vh;
-  background-color: green;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-}
-
-.song-progress {
-  width: 15px;
-  height: 50vh;
-  background-color: white;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
-
 // temp
 .userInput {
   position: fixed;
@@ -141,4 +112,8 @@
   height: 50px;
   background-color: gray;
   color: white;
+}
+
+iframe {
+  margin-top: 5vh;
 }

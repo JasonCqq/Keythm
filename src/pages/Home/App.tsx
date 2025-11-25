@@ -40,12 +40,12 @@ function App() {
 
       <section className="instructions">
         <p>Type words along with the music</p>
-        <p>Keep your health bar up (10hp) </p>
+        <p>Keep your health up </p>
         <p>Build your combos</p>
       </section>
 
-      <Link to="game">
-        <button>PLAY</button>
+      <Link to="game" className="play">
+        <p>START</p>
       </Link>
 
       <section className="grid">
